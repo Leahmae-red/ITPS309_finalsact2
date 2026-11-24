@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Halle Dress — Boutique</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; font-family: "Poppins", sans-serif; background: #f5eff8; color: #222; }
+    header { background: #ebe3f0; padding: 14px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #c5b4cf; }
+    .logo { font-family: "Great Vibes", cursive; font-size: 2.1rem; color: #5b3765; }
+    .btn { background: #5b3765; color: #fff; padding: 8px 20px; border-radius: 999px; text-decoration: none; font-size: 0.9rem; }
+    .container { max-width: 900px; margin: 48px auto; background: #fff; padding: 36px; border-radius: 20px; box-shadow: 0 10px 28px rgba(91,55,101,0.1); }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">Halle Dress</span>
+    <a class="btn" href="{% url 'logout' %}">Log Out</a>
+  </header>
+  <main class="container">
+    <h2>Welcome, {{ request.user.full_name }}!</h2>
+    <p>You are logged in as <strong>{{ request.user.email }}</strong>.</p>
+  </main>
+</body>
+</html>

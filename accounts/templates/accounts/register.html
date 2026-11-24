@@ -1,0 +1,79 @@
+{% extends "accounts/base_auth.html" %}
+{% block title %}Register — Halle Dress{% endblock %}
+
+{% block card_content %}
+  <h1>CREATE YOUR ACCOUNT</h1>
+
+  {% if form.errors %}
+    <ul class="error-box">
+      {% for field in form %}
+        {% for error in field.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      {% endfor %}
+      {% for error in form.non_field_errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <form method="post" novalidate>
+    {% csrf_token %}
+
+    <div class="form-field">
+      <label for="{{ form.full_name.id_for_label }}">Full Name</label>
+      <div class="pill-input">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="8" r="4"/>
+          <path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/>
+        </svg>
+        {{ form.full_name }}
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="{{ form.email.id_for_label }}">Email Address</label>
+      <div class="pill-input">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="5" width="18" height="14" rx="2"/>
+          <path d="M3 7l9 6 9-6"/>
+        </svg>
+        {{ form.email }}
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="{{ form.password.id_for_label }}">Password</label>
+      <div class="pill-input">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="5" y="11" width="14" height="10" rx="2"/>
+          <path d="M8 11V7a4 4 0 0 1 8 0v4"/>
+          <circle cx="12" cy="16" r="1"/>
+        </svg>
+        {{ form.password }}
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="{{ form.confirm_password.id_for_label }}">Confirm Password</label>
+      <div class="pill-input">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="5" y="11" width="14" height="10" rx="2"/>
+          <path d="M8 11V7a4 4 0 0 1 8 0v4"/>
+          <circle cx="12" cy="16" r="1"/>
+        </svg>
+        {{ form.confirm_password }}
+      </div>
+    </div>
+
+    <div class="forgot-link-wrap">
+      <a href="#">Forgot Password?</a>
+    </div>
+
+    <button type="submit" class="submit-pill">Register</button>
+  </form>
+
+  <p class="card-footer-link">
+    Already have an account? <a href="{% url 'login' %}">Log In</a>
+  </p>
+{% endblock %}
